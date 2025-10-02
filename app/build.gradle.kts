@@ -1,3 +1,13 @@
+import java.util.Properties
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val artlyUrl: String? = localProperties.getProperty("ARTLY_URL")
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,7 +15,7 @@ plugins {
 
 android {
     namespace = "com.oddlemon.artly"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.oddlemon.artly"
@@ -15,6 +25,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "ARTLY_URL", "\"$artlyUrl\"")
     }
 
     buildTypes {
@@ -33,6 +45,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -45,4 +62,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.webkit)
 }
