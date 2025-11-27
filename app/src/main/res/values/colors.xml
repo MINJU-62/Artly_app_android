@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Black&White -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Main -->
+    <color name="Main_Blue">#FF376AED</color>
+    <color name="Green">#FF3CB371</color>
+
+    <!--Gray-->
+    <color name="Gray1">#FF555555</color>
+    <color name="Gray2">#FF9A9A9A</color>
+    <color name="Gray3">#55000000</color>
+    <color name="Gray4">#FF777777</color>
+    <color name="Gray5">#FF747474</color>
+    <color name="Gray6">#FF707070</color>
+    <color name="Gray7">#FF919191</color>
+    <color name="Gray8">#FF888888</color>
+
+
+    <!-- Warning-->
+    <color name="Warning">#FFEB5757</color>
+
 </resources>
