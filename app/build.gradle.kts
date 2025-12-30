@@ -12,7 +12,7 @@ android {
         applicationId = "com.oddlemon.artly"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
+        versionCode = 5
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -72,4 +72,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-auth")
+
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }

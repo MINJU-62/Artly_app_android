@@ -11,9 +11,9 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.oddlemon.artly.R
-import com.oddlemon.artly.data.module.NotificationID
 import com.oddlemon.artly.ui.MainActivity
 import com.oddlemon.artly.util.TokenManager
+import java.util.concurrent.atomic.AtomicInteger
 
 class FirebaseMessagingService : FirebaseMessagingService() {
 
@@ -33,7 +33,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         // 저장된 userId가 있으면 서버로 전송
         val userId = TokenManager.getUserId(this)
         if (userId != -1) {
-            TokenManager.sendTokenToServer(this, userId, token)
+            TokenManager.sendTokenToServer(userId, token)
         } else {
             Log.d(TAG, "userId가 없습니다. 로그인 후 토큰이 전송됩니다.")
         }
@@ -77,7 +77,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
         } else {
             PendingIntent.FLAG_UPDATE_CURRENT
         }
-
         val notificationId = NotificationID.atomicId.incrementAndGet()
         val pendingIntent = PendingIntent.getActivity(this, notificationId, intent, pendingIntentFlag)
 
@@ -91,4 +90,8 @@ class FirebaseMessagingService : FirebaseMessagingService() {
 
         notificationManager.notify(notificationId, notificationBuilder.build())
     }
+}
+
+object NotificationID {
+    val atomicId = AtomicInteger(0)
 }
