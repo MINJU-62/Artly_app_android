@@ -1,7 +1,5 @@
 package com.oddlemon.artly.util
 
-import android.content.Intent
-import android.net.Uri
 import android.webkit.WebSettings
 import android.webkit.WebView
 import com.oddlemon.artly.ui.MainActivity
@@ -16,6 +14,7 @@ fun WebView.applyAppWebViewSettings(activity: MainActivity) {
         useWideViewPort = true
         textZoom = 100
         allowFileAccess = true
+        allowContentAccess = true
         setGeolocationEnabled(true)
         setSupportMultipleWindows(false)
         mediaPlaybackRequiresUserGesture = true
